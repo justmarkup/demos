@@ -1,0 +1,137 @@
+/*! Responsive Pop-out Menu by @justmarkup */
+
+/* basic styles for the demo */
+html {
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.header {background-color: #E65100;}
+
+.main {
+	width: 900px;
+	max-width: 90%;
+	margin: 20px auto;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	font-size: 4em;
+	font-weight: normal;
+}
+
+p {
+	font-size: 2em;
+	line-height: 1.5;
+	color: #000;
+}
+
+.logo a {
+	display: block;
+	text-indent: -2015em;
+	background: url(logo.svg) no-repeat center center;
+	width: 180px;
+	height: 80px;
+}
+
+/* styles for navigation for big screens and devices without js */
+.navigation ul {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	display: table;
+}
+
+.navigation li {
+	display: inline;
+}
+
+.navigation li a {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px 20px;
+}
+
+.menu-toggle {
+	display: none;
+}
+
+/* styles for navigation for small screens and with js */
+@media all and (max-width: 600px) {
+	.js .header {
+		height: 80px;
+	}
+
+	.js .menu-toggle {
+		display: block;
+		color: #fff;
+		float: right;
+		margin: 30px 20px;
+		text-decoration: none;
+		padding: 5px;
+		border: 1px solid #fff;
+		font-size: 1.6em;
+	}
+	.js .menu-toggle-close {
+		display: none;
+		transition: all 1000ms;
+	}
+	.js .logo {float: left;}
+	.js .navigation div {
+		background-color: #E65100;
+		position: fixed;
+		top: 30px;
+		right: 20px;
+		width: 50px;
+		height: 20px;
+		overflow: hidden;
+		opacity: 0;
+		transition: all 500ms;
+		z-index: -1;
+	}
+	.js .navigation .is--menu-opened {
+		opacity: 1;
+		height: 100%;
+		width: 100%;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+	.js .is--menu-opened .menu-toggle-close {
+		display: block;
+	}
+	.js .navigation ul {
+		display: block;
+		position: absolute;
+		bottom: 10px;
+		right: 0;
+		left: 0;
+		-webkit-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	.js .navigation li{
+		display: block;
+		-webkit-transform: rotate(-180deg);
+		-ms-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+	.js .navigation li a {
+		display: block;
+		border-top: 1px solid #fff;
+		text-align: right;
+	}
+}
