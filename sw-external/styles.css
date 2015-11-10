@@ -1,0 +1,28 @@
+body {
+	width: 75em;
+	max-width: 90%;
+	max-width: 90vw;
+	margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  height: calc(9 * 90vw / 16);
+  object-fit: cover;
+  background-color: #eee;
+}
+
+@media all and (min-width: 75em) {
+  img {
+    max-width: 100%;
+    height: auto;
+    height: calc(9 * 75em / 16);
+    object-fit: cover;
+  }
+}
+
+h1 {
+	font-weight: normal;
+	font-family: 'Pacifico', cursive;
+}
