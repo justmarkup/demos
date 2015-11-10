@@ -2,7 +2,7 @@
 importScripts('sw-cache-polyfill.js');
 
 // the version - change when you want to update the service worker
-const version = 'sw-v2';
+const version = 'sw-v3';
 
 console.log('sw worker: hi from service-worker.js');
 
