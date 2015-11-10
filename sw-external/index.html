@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Index | Service Worker: Handle external resources</title>
+</head>
+<body>
+	<!-- external img served over https without CORS -->
+	<img src="https://justmarkup.com/azores/img/sao-miguel/big/12.jpg" alt="">
+
+	<script>
+		// check if Service Worker is available
+		if ('serviceWorker' in navigator) {
+			// Register Service Worker
+			navigator.serviceWorker.register('service-worker.js');
+
+			if (!navigator.serviceWorker.controller) {
+				console.log("sw client: This page is not controlled by a ServiceWorker");
+			}
+			else {
+				console.log("sw client: This page is controlled by a ServiceWorker");
+			}
+		}
+	</script>
+</body>
+</html>
