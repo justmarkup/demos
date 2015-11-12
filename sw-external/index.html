@@ -45,6 +45,14 @@
 				externalScript.src = 'https://justmarkup.com/sw-external-script.js';
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(externalScript, s);
+
+				var externalScriptHttp = document.createElement('script');
+				externalScriptHttp.type = 'text/javascript';
+				externalScriptHttp.async = true;
+				externalScriptHttp.src = 'http://justmarkup.com/sw-external-script.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(externalScriptHttp, s);
+
 			})();
 
 		}
