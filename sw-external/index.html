@@ -34,9 +34,19 @@
 
 
 			// append external img served over https without CORS
-			var externalIMG = document.createElement('img');
-			externalIMG.src = 'https://justmarkup.com/azores/img/sao-miguel/big/3.jpg';
-			document.body.appendChild(externalIMG);
+			var externalImg = document.createElement('img');
+			externalImg.src = 'https://justmarkup.com/azores/img/sao-miguel/big/3.jpg';
+			document.body.appendChild(externalImg);
+
+			(function(){
+				var externalScript = document.createElement('script');
+				externalScript.type = 'text/javascript';
+				externalScript.async = true;
+				externalScript.src = 'https://justmarkup.com/sw-external-script.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(externalScript, s);
+			})();
+
 		}
 	</script>
 </body>
