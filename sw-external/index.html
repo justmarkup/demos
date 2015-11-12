@@ -31,6 +31,12 @@
 			else {
 				console.log("sw client: This page is controlled by a ServiceWorker");
 			}
+
+
+			// append external img served over https without CORS
+			var externalIMG = document.createElement('img');
+			externalIMG.src = 'https://justmarkup.com/azores/img/sao-miguel/big/3.jpg';
+			document.body.appendChild(externalIMG);
 		}
 	</script>
 </body>
