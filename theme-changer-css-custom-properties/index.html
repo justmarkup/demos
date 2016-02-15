@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Theme changer with custom variables</title>
+	<style>
+		:root {
+			--baseColor: #111;
+			--brandColor: green;
+			--bgColor: #eee;
+		}
+		html,
+		body {
+			background-color: #eee;
+			background-color: var(--bgColor);
+			color: #111;
+			color: var(--baseColor);
+			width: 60em;
+			margin: 0 auto;
+			max-width: 94%;
+			font-family: Helvetica, Arial, sans-serif;
+			line-height: 1.6;
+		}
+
+		a {
+			color: #111;
+			color: var(--baseColor);
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+			color: green;
+			color: var(--brandColor);
+		}
+	</style>
+</head>
+<body>
+	<label id="theme-changer" class="hidden" hidden>
+		Choose theme
+		<select name="theme" id="theme">
+			<option data-baseColor="#111" data-bgColor="#eee" data-brandColor="green" value="default">default</option>
+			<option data-baseColor="#444" data-bgColor="white" data-brandColor="#222" value="light">light</option>
+			<option data-baseColor="white" data-bgColor="black" data-brandColor="#eee" value="dark">dark</option>
+		</select>
+	</label>
+	<h1>Headline</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus vel accusamus, reiciendis dolorum qui aut quasi cum mollitia cupiditate vitae culpa deserunt ducimus tempora libero quae voluptates necessitatibus, tenetur veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus vel accusamus, reiciendis dolorum qui aut quasi cum mollitia cupiditate vitae culpa deserunt ducimus tempora libero quae voluptates necessitatibus, tenetur veritatis.</p>
+
+	<p>Read the <a href="https://justmarkup.com/log/2016/02/theme-changer-with-css-custom-properties/">full article</a>.</p>
+	<script>
+	// test for localStorage support
+	var hasLocalStorage = function () {
+		var mod = 'a';
+		try {
+			localStorage.setItem(mod, mod);
+			localStorage.removeItem(mod);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	};
+
+	// test for CSS custom variables support
+	if (hasLocalStorage() && window.CSS && window.CSS.supports && window.CSS.supports('--a', 0)) {
+
+		var themeChanger = document.querySelector('#theme-changer'),
+				root = document.querySelector(':root'),
+				themeInput = document.querySelector('#theme'),
+				currentTheme = {
+					baseColor: localStorage.getItem("baseColor") || '#111',
+					bgColor: localStorage.getItem("bgColor") || '#eee',
+					brandColor: localStorage.getItem("brandColor") || 'green'
+				},
+				selectOption;
+
+
+		// show the theme changer
+		themeChanger.classList.remove('hidden');
+		themeChanger.removeAttribute('hidden');
+
+		// change colors and save to localStorage
+		themeInput.addEventListener('change', function (e) {
+
+			// get selected option
+			selectOption = this.options[this.selectedIndex];
+
+			// change values to current theme
+			currentTheme = {
+				baseColor: selectOption.getAttribute('data-baseColor'),
+				bgColor: selectOption.getAttribute('data-bgColor'),
+				brandColor: selectOption.getAttribute('data-brandColor')
+			};
+
+			// change values of custom properties and save to localStorage
+			for (var key in currentTheme) {
+				root.style.setProperty("--" + key, currentTheme[key]);
+				localStorage.setItem(key, currentTheme[key]);
+			}
+		});
+
+		// set theme to previous choosen one
+		window.onload = function(e) {
+
+			// set option of current theme to selected
+			document.querySelector('[data-baseColor="' + currentTheme.baseColor + '"]').selected = true;
+
+			// get values of custom properties and apply
+			for (var key in currentTheme) {
+				root.style.setProperty("--" + key, currentTheme[key]);
+			}
+		}
+
+	} else {
+		// CSS custom properties not supported - don't show the theme changer
+		alert("You browser doesn't support CSS custom variables yet :-( - Site is still usable and you will get the default theme");
+	}
+	</script>
+</body>
+</html>
