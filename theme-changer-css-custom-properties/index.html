@@ -23,7 +23,7 @@
 			line-height: 1.6;
 		}
 
-		.hidden {
+		[hidden] {
 			display: none;
 		}
 
@@ -40,7 +40,7 @@
 	</style>
 </head>
 <body>
-	<label id="theme-changer" class="hidden">
+	<label id="theme-changer" hidden>
 		Choose theme
 		<select name="theme" id="theme">
 			<option data-baseColor="#111" data-bgColor="#eee" data-brandColor="green" value="default">default</option>
@@ -80,7 +80,7 @@
 
 
 		// show the theme changer
-		themeChanger.classList.remove('hidden');
+		themeChanger.removeAttribute('hidden');
 
 		// change colors and save to localStorage
 		themeInput.addEventListener('change', function (e) {
