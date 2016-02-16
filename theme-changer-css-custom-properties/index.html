@@ -23,14 +23,16 @@
 			line-height: 1.6;
 		}
 
+		.hidden {
+			display: none;
+		}
+
 		a {
 			color: #111;
 			color: var(--baseColor);
 		}
 
-		h1,
-		h2,
-		h3 {
+		h1 {
 			font-weight: normal;
 			color: green;
 			color: var(--brandColor);
@@ -38,7 +40,7 @@
 	</style>
 </head>
 <body>
-	<label id="theme-changer" class="hidden" hidden>
+	<label id="theme-changer" class="hidden">
 		Choose theme
 		<select name="theme" id="theme">
 			<option data-baseColor="#111" data-bgColor="#eee" data-brandColor="green" value="default">default</option>
@@ -79,7 +81,6 @@
 
 		// show the theme changer
 		themeChanger.classList.remove('hidden');
-		themeChanger.removeAttribute('hidden');
 
 		// change colors and save to localStorage
 		themeInput.addEventListener('change', function (e) {
