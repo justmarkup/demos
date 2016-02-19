@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Login form || Container queries</title>
+	<link rel="stylesheet" href="../main.css">
+	<style>
+		form[max-width~="600px"] label,
+		form[max-width~="600px"] input[type="submit"] {
+			margin: 0.6em 0 0.2em 0;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1>My blog</h1>
+	</header>
+
+	<main>
+		<div class="alpha">
+			<h2>Login</h2>
+			<form action="./" method="post">
+				<label for="email">Email</label>
+				<input name="email" type="text">
+				<label for="pass">Password</label>
+				<input name="pass" type="password">
+
+				<input type="submit" value="Log in">
+			</form>
+		</div>
+
+		<aside>
+			<h2>Login</h2>
+			<form action="./" method="post">
+				<label for="email">Email</label>
+				<input name="email" type="text">
+				<label for="pass">Password</label>
+				<input name="pass" type="password">
+
+				<input type="submit" value="Log in">
+			</form>
+		</aside>
+	</main>
+	
+	<footer>
+		Footer
+	</footer>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+
+	
+</body>
+</html>

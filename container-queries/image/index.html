@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Images || Container queries</title>
+	<link rel="stylesheet" href="../main.css">
+	<style>
+
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1>My blog</h1>
+	</header>
+
+	<main>
+		<div class="alpha">
+			<h2>Image</h2>
+			<div data-responsive-image>
+				<img alt="" data-src="http://lorempixel.com/350/150/sports/350x150/">
+				<img min-width="350" data-src="http://lorempixel.com/700/300/sports/700x300/">
+				<img min-width="700" data-src="http://lorempixel.com/1400/600/sports/1400x600/">
+			</div>
+		</div>
+
+		<aside>
+			<h2>Image</h2>
+			<div data-responsive-image>
+				<img alt="" data-src="http://lorempixel.com/350/150/sports/350x150/">
+				<img min-width="350" data-src="http://lorempixel.com/700/300/sports/700x300/">
+				<img min-width="700" data-src="http://lorempixel.com/1400/600/sports/1400x600/">
+			</div>
+		</aside>
+	</main>
+	
+	<footer>
+		Footer
+	</footer>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+
+	
+</body>
+</html>

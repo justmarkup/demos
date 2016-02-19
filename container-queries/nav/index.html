@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Navigation || Container queries</title>
+	<link rel="stylesheet" href="../main.css">
+	<style>
+
+	nav[min-height~="80px"] a {
+		clear: both;
+		float: none;
+		border-top: 1px solid #B6B6B6;
+		padding: 10px 20px;
+	}
+
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1>My blog</h1>
+		<nav class="clearfix">
+			<ul>
+				<li>
+					<a href="#">Home</a>
+					<a href="#">Politics</a>
+					<a href="#">Sport</a>
+					<a href="#">Culture</a>
+					<a href="#">Travel</a>
+					<a href="#">Tech</a>
+					<a href="#">World is a long long nav item</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		
+	</main>
+
+	<footer>
+		Footer
+	</footer>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+</body>
+</html>

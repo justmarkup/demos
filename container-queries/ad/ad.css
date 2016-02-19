@@ -1,0 +1,24 @@
+.ad {
+	font-size: 1em;
+	border: 1px dashed #ddd;
+	padding: 0.4em;
+}
+
+.ad h3 {
+	font-size: 1.4em;
+	margin: 0;
+}
+
+.ad p {
+	font-size: 1em;
+	margin: 0.4em 0 0 0;
+}
+
+.ad a {
+	text-decoration: none;
+	color: #111;
+}
+
+.ad[min-width~="500px"] {
+	font-size: 1.4em;
+}

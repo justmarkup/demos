@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Product items || Container queries</title>
+	<link rel="stylesheet" href="../main.css">
+	<style>
+		aside {
+			background: #eee;
+			padding: 0 0.4em;
+		}
+
+		.products ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.products[min-width~="600px"] img {
+			width: 50%;
+			float: left;
+			margin: 0 2em 2em 0;
+		}
+
+		.products[min-width~="800px"] ul {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+		}
+
+		.products[min-width~="800px"] li {
+			width: 32%;
+		}
+
+		.products[min-width~="800px"] li:nth-child(1):nth-last-child(1) {
+			width: 100%;
+		}
+
+		/* two items */
+		.products[min-width~="800px"] li:nth-child(1):nth-last-child(2),
+		.products[min-width~="800px"] li:nth-child(2):nth-last-child(1) {
+			width: 49%;
+		}
+
+		.products[min-width~="800px"] img {
+			width: 100%;
+			float: none;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1>My shop</h1>
+	</header>
+
+	<main>
+		<div class="alpha">
+			<h2>Popular products</h2>
+			<div class="products">
+				<ul>
+					<li>
+						<img src="https://spaceholder.cc/400x200" alt="">
+						<h3><a href="#">The best product ever ever ever ever</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque optio a labore laudantium eius pariatur eaque reiciendis maxime maiores.</p>
+					</li>
+					<li>
+						<img src="https://spaceholder.cc/400x200" alt="">
+						<h3><a href="#">A not so bad product</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque optio a labore laudantium eius pariatur eaque reiciendis maxime maiores.</p>
+					</li>
+					<li>
+						<img src="https://spaceholder.cc/400x200" alt="">
+						<h3><a href="#">The worst product ever</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque optio a labore laudantium eius pariatur eaque reiciendis maxime maiores, est laboriosam, nihil sed rerum, perspiciatis sunt non similique minus.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<aside>
+			<h2>Newest product</h2>
+			<div class="products">
+				<ul>
+					<li>
+						<img src="https://spaceholder.cc/400x200" alt="">
+						<h3><a href="#">The best product ever ever ever ever</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque optio a labore laudantium eius pariatur eaque reiciendis maxime maiores.</p>
+					</li>
+				</ul>
+			</div>
+		</aside>
+	</main>
+	
+	<footer>
+		Footer
+	</footer>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+
+	
+</body>
+</html>

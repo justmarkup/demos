@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Third-party iframe || Container queries</title>
+	<link rel="stylesheet" href="../main.css">
+	<style>
+		iframe {
+			width: 100%;
+			height: 200px;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1>My blog</h1>
+	</header>
+
+	<main>
+		<div class="alpha">
+			<h2>Third-party widget</h2>
+			<iframe src="third-party.html" frameborder="0"></iframe>
+		</div>
+
+		<aside>
+			<h2>Third-party widget</h2>
+			<iframe src="third-party.html" frameborder="0"></iframe>
+		</aside>
+	</main>
+	
+	<footer>
+		Footer
+	</footer>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+</body>
+</html>

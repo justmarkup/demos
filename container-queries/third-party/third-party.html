@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Third-party Widget</title>
+	<style>
+		html {
+			background-color: #eee;
+		}
+
+		div {
+			background-color: blue;
+			padding: 10px;
+			color: #fff;
+		}
+
+		div[max-width~="300px"] {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>I am a third-party widget</h1>
+
+	<div>
+		If my container is 300px or less I am red, otherwise I am blue
+	</div>
+
+	<script src="../css-element-queries/src/ResizeSensor.js"></script>
+	<script src="../css-element-queries/src/ElementQueries.js"></script>
+</body>
+</html>
