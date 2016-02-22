@@ -3,6 +3,11 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Use cases for container queries
+------------
+ * Demo: https://justmarkup.com/demos/container-queries/
+ * Article: https://justmarkup.com/log/2016/02/use-cases-for-container-queries/
+
 Theme changer using custom properties
 ------------
  * Demo: https://justmarkup.com/demos/custom-prop/
