@@ -3,6 +3,11 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Grey-out pages not in Cache
+------------
+ * Demo: https://justmarkup.github.io/demos/indicating-offline/
+ * Article: https://justmarkup.com/log/2016/08/indicating-offline/
+
 Use cases for container queries
 ------------
  * Demo: https://justmarkup.com/demos/container-queries/
