@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>You will never believe what happend next</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			width: 600px;
+			max-width: 90%;
+			margin: 0 auto;
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		h1 {
+			color: #222;
+			font-weight: normal;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		a {
+			color: black;
+			text-decoration: none;
+			font-size: 20px;
+			padding: 10px;
+			border: 1px solid #ddd;
+			border-width: 1px 0 0 40px;
+			display: block;
+			margin-bottom: 4px;
+		}
+
+		.is-offline a {
+			color: grey;
+			cursor: default;
+		}
+
+		.is-offline .available-offline {
+			color: black;
+			cursor: pointer;
+		}
+
+		.connection-status {
+			margin: 0;
+			text-align: right;
+			padding: 10px 0 0 0;
+			color: green;
+		}
+
+		.is-offline .connection-status {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<p class="connection-status">Online</p>
+
+	<h1>You will never believe what happend next</h1>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum?</p>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum?</p>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet explicabo quidem sit voluptates quisquam itaque consectetur eos accusantium optio officia repellat provident laboriosam qui inventore, placeat ipsum velit doloremque rerum?</p>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+				// Registration was successful
+			}).catch(function(err) {
+				// registration failed :(
+			});
+		}
+
+		// check if the cache API is supported
+		if('caches' in window) {
+
+			// forEach for NodeList
+			NodeList.prototype.forEach = Array.prototype.forEach;
+
+			// loop over each link and add class "available-offline" if src is already in cache
+			var downloadLinks = document.querySelectorAll('a').forEach(function(el) {
+				caches.open('articles').then(function(cache) { 
+					cache.match(el.getAttribute('href')).then(function(matchedResponse) {
+						console.log(matchedResponse);
+						if (matchedResponse) {
+							el.classList.add('available-offline');
+						}
+					});	
+				});
+			});
+		}
+
+		// add "is-offline" class to the html element if user is offline and remove when online again
+		window.addEventListener('load', function() {
+			function updateOnlineStatus(event) {
+				if (navigator.onLine) {
+					document.documentElement.classList.remove('is-offline');
+					document.querySelector('.connection-status').innerHTML = 'Online';
+				} else {
+					document.documentElement.classList.add('is-offline');
+					document.querySelector('.connection-status').innerHTML = 'Offline';
+				}
+			}
+
+			window.addEventListener('online',  updateOnlineStatus);
+			window.addEventListener('offline', updateOnlineStatus);
+		});
+
+	</script>
+</body>
+</html>
