@@ -44,3 +44,33 @@ textarea {
 	padding: 0.4em;
 	background: #ddd;
 }
+.comments h4 {
+	margin: 0.3em 0 0 0;
+}
+.comments p {
+	margin: 0.4em 0 0 0;
+}
+.comments li {
+	margin-bottom: 2em;
+}
+@supports (counter-reset: test) {
+	.comments {
+		counter-reset: comment;
+		list-style-type: none;
+	}
+	.comments li {position: relative;}
+	.comments li:before {
+		counter-increment: comment;
+		content: counters(comment,".") " ";
+		font-size: 16px;
+		position: absolute;
+		left: -40px;
+		top: 0;
+		background: #ddd;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+	}
+}
