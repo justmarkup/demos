@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Demo V1: Enhancing an form: From basic to custom error message to BackgroundSync</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+	<p class="note"><strong>Note:</strong> The comments are not saved in a database on submit. This example demonstrates the front-end but not the back-end.</p>
+
+	<h3>Comments</h3>
+
+	<ol class="comments">
+		<li>First comment</li>
+	</ol>
+
+	<form action="./" method="post">
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name">
+
+		<label for="comment">Comment</label>
+		<textarea name="comment" id="comment"></textarea>
+
+		<button type="submit">Publish</button>
+	</form>
+
+</body>
+</html>

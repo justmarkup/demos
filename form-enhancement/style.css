@@ -1,0 +1,46 @@
+html {
+	font-family: Helvetica, Arial, sans-serif;
+}
+* {
+	box-sizing: border-box;
+}
+body {
+	width: 600px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+label {
+	display: block;
+	padding: 0.8em 0 0.2em 0;
+}
+button {
+	display: block;
+	float: right;
+}
+textarea,
+input {
+	width: 100%;
+	width: calc(100% - 1.2em);
+	padding: 0.6em;
+	border: 1px solid #444;
+	box-sizing: content-box;
+}
+textarea {
+	height: 100px;
+}
+.error {
+	color: red;
+}
+.info {
+	color: orange;
+}
+.success {
+	color: green;
+}
+.note {
+	border: 1px solid #444;
+	border-width: 0 1px 1px 1px;
+	margin: 0;
+	padding: 0.4em;
+	background: #ddd;
+}
