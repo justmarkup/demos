@@ -21,6 +21,11 @@ self.addEventListener('fetch', function(event) {
 	if (request.method !== 'GET') {
 		return;
 	}
+	event.respondWith(
+		caches.match(request).then(function(response) {
+			return response || fetch(request);
+		})
+	);
 });
 
 self.addEventListener('activate', function(event) {
