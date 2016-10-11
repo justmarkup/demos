@@ -16,6 +16,7 @@ label {
 button {
 	display: block;
 	float: right;
+	font-size: 16px;
 }
 textarea,
 input {
@@ -24,6 +25,7 @@ input {
 	padding: 0.6em;
 	border: 1px solid #444;
 	box-sizing: content-box;
+	font-size: 16px;
 }
 textarea {
 	height: 100px;
