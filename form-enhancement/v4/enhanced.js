@@ -21,9 +21,13 @@ if( window.FormData) {
 
 	var appendComment = function (nameValue, commentValue) {
 		var comment = document.createElement('li');
+		var commentName = document.createElement('h4');
+		var commentComment = document.createElement('p');
 		var commentWrapper = document.querySelector('.comments');
-		nameValue = nameValue ? '<h4>' + nameValue + '</h4>' : '';
-		comment.innerHTML = nameValue + '<p>' + commentValue + '</p>';
+		commentName.innerText = nameValue;
+		commentComment.innerText = commentValue;
+		nameValue ? comment.appendChild(commentName) : '';
+		comment.appendChild(commentComment);
 		commentWrapper.appendChild(comment);
 	};
 
