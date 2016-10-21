@@ -108,8 +108,8 @@
 				navigator.share({
 					title: document.title,
 					url: document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href
-				}).then(() => alert('Successful share'))
-				.catch(() => alert('Error sharing:', error));
+				}).then(() => console.log('Successful share'))
+				.catch((error) => console.log('Error sharing:', error));
 
 				ev.preventDefault();
 			});
@@ -140,8 +140,8 @@
 			navigator.share({
 				title: document.title,
 				url: document.querySelector('link[rel=canonical]').href
-			}).then(() => alert('Successful share'))
-			.catch(() => alert('Error sharing:', error));
+			}).then(() => console.log('Successful share'))
+			.catch((error) => console.log('Error sharing:', error));
 
 			ev.preventDefault();
 		});
