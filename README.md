@@ -3,6 +3,12 @@ Demos
 
 Author: justmarkup @justmarkup
 
+
+Using the Web Share API
+------------
+ * Demo: hhttps://justmarkup.com/web-share-api/using-the-web-share-api.html
+ * Article: https://justmarkup.com/log/2016/10/using-the-web-share-api/
+
 Grey-out pages not in Cache
 ------------
  * Demo: https://justmarkup.github.io/demos/indicating-offline/
