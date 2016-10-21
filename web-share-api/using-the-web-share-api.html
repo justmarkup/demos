@@ -76,11 +76,12 @@
 	<p><a href="https://justmarkup.com/log/2016/10/using-the-web-share-api/">Original article</a></p>
 
 	<div class="entry-content">
-		<p class="info" style="background-color: #ddd; color: #000;">The Web Share API is an experiment in Chrome and the origin trial will end in April 2017. Altough I try to keep my articles up-to-date, the information here will likely be outdated at some point. For more info please visit <a href="https://developers.google.com/web/updates/2016/10/navigator-share">developers.google.com</a></p>
-		<p>Since Chrome 55 (Beta as of October 2016) you can use the Web Share API as an <a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Origin Trail</a> on Android. In this article I would like to show, how to enhance your current share button with the Web Share API.</p>
-		<p><span id="more-2598"></span></p>
+		<p class="info-updated" style="background-color: #ddd; color: #000;">The Web Share API is an experiment in Chrome and the origin trial will end in April 2017. Although I try to keep my articles up-to-date, the information here will likely be outdated at some point. For more info please visit <a href="https://developers.google.com/web/updates/2016/10/navigator-share">developers.google.com</a></p>
+		<p>Since Chrome 55 (Beta as of October 2016) you can use the Web Share API as an <a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Origin Trail</a> on Android. In this article, I would like to show, how to enhance your current share button with the Web Share API.</p>
+
 		<h2>Requirements</h2>
 		<p>As I said, the Web Share API is an origin trail until April 2017. So, you first need to <a href="https://docs.google.com/forms/d/e/1FAIpQLSfO0_ptFl8r8G0UFhT0xhV17eabG-erUWBDiKSRDTqEZ_9ULQ/viewform">sign up</a> to get a trail token. After about 1 day (it took ~4hours in my case) you will get an email with the Origin Trial Token for your site.</p>
+
 		<p>Next you have to include the token on your site:</p>
 		<pre><code class="language-markup">&lt;meta http-equiv=&quot;origin-trial&quot; data-feature=&quot;Web Share&quot; data-expires=&quot;2016-12-01&quot; content=&quot;TOKEN&quot;&gt;
 		</code></pre>
@@ -117,12 +118,12 @@
 		<p>Let’s go through the code one by one. First, we add a feature test to check if <code>navigator.share</code> is supported. If this is the case, we change the text of our share link from “Share via Twitter” to “Share” to show that you can share with various services. </p>
 		<p>Next, we add an <code>EventListener</code> for our share link, to call <code>navigator.share</code> on click. There we define properties for title and url. You can also add a text property here. For the url we first check if there is a cononical link and use that, otherwise we use the current url. </p>
 		<p>Last, we call <code>ev.preventDefault();</code> to prevent the default action of the link.</p>
-		<p>With that in place, everyone using a browser supporting the Share API can now easily share the site via all services/apps they have installed on their device.</p>
-		<p>Here is a <a href="https://justmarkup.com/web-share-api/using-the-web-share-api.html">demo</a>.</p>
-		<p>Note: To enhance the sharing for browsers not supporting the Web Share API you can also use <a href="https://jonsuh.com/blog/social-share-links/">responsible social share links</a> and load the share dialog in a popup.</p>
+		<p>Everyone using a browser supporting the Share API can now easily share the site via all services/apps they have installed on their device and all others still get the twitter link or can copy the URL and share with their favorite service. </p>
+		<p>Here is a <a href="https://justmarkup.com/web-share-api/using-the-web-share-api.html">demo</a> and you can also find the code on <a href="https://github.com/justmarkup/demos/blob/gh-pages/web-share-api/using-the-web-share-api.html">Github</a>.</p>
+		<p>Note: To enhance the sharing for browsers not supporting the Web Share API you can also use <a href="https://jonsuh.com/blog/social-share-links/">responsible social share links</a> and load the share dialog in a pop-up.</p>
 		<h2>Conclusion</h2>
-		<p>It take some preparation to use the Share API but once you have completed them you can use it with some lines of JavaScript.</p>
-		<p>The Web Share API will be a trail at least until April 2017, after that there may be another trail or it may be implemented by default. It also only works on Android by now. Still, I like the idea – it is a great example of browsers implementing features many sites already use. </p>
+		<p>It takes some preparation to use the Share API, but once you have completed them you can use it with some lines of JavaScript.</p>
+		<p>The Web Share API will be a trail at least until April 2017, after that there may be another trail or it may be implemented by default. It also only works on Android for now. Still, I like the idea - it is a great example of browsers implementing features many sites already use. This gives users an enhanced experience without the overhead of loading lots of JavaScript as it currently the case on many sites.</p>
 		<p>Happy sharing!</p>
 		</div>
 
