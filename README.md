@@ -3,6 +3,10 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Show More Pattern
+------------
+ * Demo: [Using :target](https://justmarkup.com/demos/toggle-content/showmore/with-target), [Using JavaScript](https://justmarkup.com/demos/toggle-content/showmore/with-jquery/) and [Using jQuery](https://justmarkup.com/demos/toggle-content/showmore/with-js/)
+ * Article: https://justmarkup.com/log/2017/01/truncating-and-revealing-text-the-show-more-and-read-more-patterns/
 
 Using the Web Share API
 ------------
