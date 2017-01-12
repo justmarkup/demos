@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>Show More Example using :target | Truncating</title>
+
+	<style>
+		/* styles to show style tag */
+		head {
+			display: block;
+			order: 2;
+			width: 100%;
+		}
+		style {
+			display: block;
+			font-family: monospace;
+			background: #eee;
+			color: #000;
+			font-size: 1.2em;
+			padding: 20px;
+			position: relative;
+			white-space: pre;
+			tab-size: 4;
+			overflow-x: scroll;
+		}
+		style:before {
+			content: "CSS from the actual style tag";
+			position: absolute;
+			top: 0;
+			left: 20px;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 1.2em;
+		}
+
+		/* general styles */
+		html {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Helvetica, Arial, sans-serif;
+			line-height: 1.6;
+		}
+		body {
+			width: 640px;
+			max-width: 90%;
+			max-width: calc(100% - 40px);
+			margin: 0 auto 4em auto;
+			color: #222;
+			order: 1;
+		}
+		h1 {
+			font-size: 2em;
+		}
+		h2 {
+			font-size: 1.6em;
+		}
+		p {
+			font-size: 1.3em;
+		}
+		.visually-hidden {
+			clip: rect(1px, 1px, 1px, 1px);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+		}
+		a:hover .visually-hidden,
+		a:focus .visually-hidden {
+			position: relative;
+		}
+		a {
+			color: #123987;
+			font-size: 1.2em;
+		}
+		a:hover,
+		a:focus {
+			text-decoration: none;
+		}
+		/* styles for show more */
+		.fulltext p,
+		.less {
+			display: none;
+		}
+
+		.fulltext:target p,
+		.fulltext:target .less {
+			display: block;
+		}
+
+		.fulltext:target .more {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Toggle content using :target</h1>
+
+	<article id="less-1">
+
+		<h2>My second article</h2>
+
+		<p>Lorem ipsum taciti nulla metus libero metus cursus euismod, ac ultricies adipiscing feugiat netus dictum dapibus ipsum lacinia, cubilia potenti odio placerat feugiat est accumsan pulvinar ornare lorem sed turpis fames class, aenean sapien aliquet porta pretium, fames tellus odio quisque primis.</p>
+
+		<div class="fulltext" id="more-1">
+
+			<a class="more" href="#more-1">Show more <span class="visually-hidden">about My second article</span></a>
+
+			<p>Nisl nulla augue cubilia fusce ligula ut urna fringilla curabitur, habitant hendrerit rhoncus vivamus taciti sociosqu nostra ultricies, libero lobortis rhoncus aenean nullam nibh aliquam dapibus venenatis faucibus aptent habitant ut lacinia litora, iaculis purus ornare lorem quam, metus sociosqu luctus urna class.</p>
+
+			<p>Sollicitudin ligula dictum enim scelerisque curabitur placerat curae elit taciti rhoncus ullamcorper, sodales potenti consectetur odio class enim velit quisque porta interdum.</p>
+
+			<p>Auctor ornare mollis volutpat id enim consequat et turpis, sagittis porta metus sollicitudin volutpat primis elementum, varius rhoncus vivamus velit nostra euismod amet proin molestie mi donec sed fusce viverra mollis, conubia pellentesque curae sapien habitant quisque nec habitant, rhoncus id velit quisque nec nam aliquet lobortis turpis posuere faucibus fermentum laoreet, ultrices class blandit hac senectus neque nisi, turpis velit etiam gravida viverra hendrerit vestibulum conubia class ipsum mi nostra.</p>
+
+			<p>Metus habitasse quis cursus eu ut risus, sem laoreet sit tortor libero posuere lacinia, nostra justo placerat urna integer lacus vivamus interdum velit fusce class egestas diam dui volutpat, justo a non urna mauris bibendum elementum aliquam lacinia, pretium etiam mauris habitasse aliquet lacinia porta quisque elementum integer vivamus aenean magna tempus ac auctor viverra facilisis, tincidunt taciti himenaeos aliquam pellentesque facilisis himenaeos in, faucibus elit suspendisse metus consectetur ut sollicitudin platea.</p>
+
+			<a class="less" href="#less-1">Show less <span class="visually-hidden">about My second article</span></a>
+
+		</div>
+
+	</article>
+
+	<article id="less-2">
+
+		<h2>First article</h2>
+
+		<p>Lorem ipsum taciti nulla metus libero metus cursus euismod, ac ultricies adipiscing feugiat netus dictum dapibus ipsum lacinia, cubilia potenti odio placerat feugiat est accumsan pulvinar ornare lorem sed turpis fames class, aenean sapien aliquet porta pretium, fames tellus odio quisque primis.</p>
+
+		<div class="fulltext" id="more-2">
+
+			<a class="more" href="#more-2">Show more <span class="visually-hidden">about First article</span></a>
+
+			<p>Nisl nulla augue cubilia fusce ligula ut urna fringilla curabitur, habitant hendrerit rhoncus vivamus taciti sociosqu nostra ultricies, libero lobortis rhoncus aenean nullam nibh aliquam dapibus venenatis faucibus aptent habitant ut lacinia litora, iaculis purus ornare lorem quam, metus sociosqu luctus urna class.</p>
+
+			<p>Sollicitudin ligula dictum enim scelerisque curabitur placerat curae elit taciti rhoncus ullamcorper, sodales potenti consectetur odio class enim velit quisque porta interdum.</p>
+
+			<p>Auctor ornare mollis volutpat id enim consequat et turpis, sagittis porta metus sollicitudin volutpat primis elementum, varius rhoncus vivamus velit nostra euismod amet proin molestie mi donec sed fusce viverra mollis, conubia pellentesque curae sapien habitant quisque nec habitant, rhoncus id velit quisque nec nam aliquet lobortis turpis posuere faucibus fermentum laoreet, ultrices class blandit hac senectus neque nisi, turpis velit etiam gravida viverra hendrerit vestibulum conubia class ipsum mi nostra.</p>
+
+			<p>Metus habitasse quis cursus eu ut risus, sem laoreet sit tortor libero posuere lacinia, nostra justo placerat urna integer lacus vivamus interdum velit fusce class egestas diam dui volutpat, justo a non urna mauris bibendum elementum aliquam lacinia, pretium etiam mauris habitasse aliquet lacinia porta quisque elementum integer vivamus aenean magna tempus ac auctor viverra facilisis, tincidunt taciti himenaeos aliquam pellentesque facilisis himenaeos in, faucibus elit suspendisse metus consectetur ut sollicitudin platea.</p>
+
+			<a class="less" href="#less-2">Show less <span class="visually-hidden">about First article</span></a>
+
+		</div>
+	</article>
+</body>
+</html>

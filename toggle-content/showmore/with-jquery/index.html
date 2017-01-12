@@ -56,20 +56,18 @@
 		p {
 			font-size: 1.3em;
 		}
-		.screen-readers {
-			position: absolute;
-			width: 1px;
+		.visually-hidden {
+			clip: rect(1px, 1px, 1px, 1px);
 			height: 1px;
-			padding: 0;
-			margin: -1px;
 			overflow: hidden;
-			clip: rect(0,0,0,0);
-			border: 0;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
 		}
-		a:hover .screen-readers,
-		a:focus .screen-readers,
-		button:hover .screen-readers,
-		button:focus .screen-readers {
+		a:hover .visually-hidden,
+		a:focus .visually-hidden,
+		button:hover .visually-hidden,
+		button:focus .visually-hidden {
 			position: relative;
 			margin: 0;
 		}
@@ -110,7 +108,7 @@
 
 		</div>
 
-		<button aria-expanded="false" aria-controls="more-2" class="toggle-content" hidden><span class="text">Show More</span> <span class="screen-readers">about My second article</span></button>
+		<button aria-expanded="false" aria-controls="more-2" class="toggle-content" hidden><span class="text">Show More</span> <span class="visually-hidden">about My second article</span></button>
 
 	</article>
 
@@ -132,7 +130,7 @@
 
 	</div>
 
-	<button aria-expanded="false" aria-controls="more-1" class="toggle-content" hidden><span class="text">Show More</span> <span class="screen-readers">about First article</span></button>
+	<button aria-expanded="false" aria-controls="more-1" class="toggle-content" hidden><span class="text">Show More</span> <span class="visually-hidden">about First article</span></button>
 
 	</article>
 	<script src="../../jquery.js"></script>
