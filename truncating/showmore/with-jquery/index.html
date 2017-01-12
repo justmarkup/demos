@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>Show More Example using jQuery | Truncating</title>
+	<style>
+		/* styles to show script tag */
+		script {
+			display: block;
+			font-family: monospace;
+			background: #eee;
+			color: #000;
+			font-size: 1.2em;
+			padding: 20px;
+			position: relative;
+			white-space: pre;
+			tab-size: 2;
+			overflow-x: scroll;
+			margin: 60px 0;
+		}
+		script:before {
+			content: "JavaScript from the actual script tag";
+			position: absolute;
+			top: 0;
+			left: 20px;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 1.2em;
+		}
+		script:first-of-type {
+			display: none;
+		}
+
+		/* general styles */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Helvetica, Arial, sans-serif;
+			line-height: 1.6;
+		}
+		article {
+			width: 640px;
+			max-width: 90%;
+			max-width: calc(100% - 40px);
+			margin: 0 auto 4em auto;
+			color: #222;
+		}
+		h1 {
+			font-size: 2em;
+			text-align: center;
+		}
+		h2 {
+			font-size: 1.6em;
+		}
+		p {
+			font-size: 1.3em;
+		}
+		.screen-readers {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0,0,0,0);
+			border: 0;
+		}
+		a:hover .screen-readers,
+		a:focus .screen-readers,
+		button:hover .screen-readers,
+		button:focus .screen-readers {
+			position: relative;
+			margin: 0;
+		}
+		a {
+			color: #123987;
+			font-size: 1.2em;
+		}
+		a:hover,
+		a:focus {
+			text-decoration: none;
+		}
+
+		[hidden] {
+			display: none;
+		}
+	</style>
+
+	
+</head>
+<body>
+	<h1>Toggle content using jQuery</h1>
+
+	<article>
+
+		<h2>My second article</h2>
+
+		<p>Lorem ipsum taciti nulla metus libero metus cursus euismod, ac ultricies adipiscing feugiat netus dictum dapibus ipsum lacinia, cubilia potenti odio placerat feugiat est accumsan pulvinar ornare lorem sed turpis fames class, aenean sapien aliquet porta pretium, fames tellus odio quisque primis.</p>
+
+		<div id="more-2" class="fulltext">
+
+			<p>Nisl nulla augue cubilia fusce ligula ut urna fringilla curabitur, habitant hendrerit rhoncus vivamus taciti sociosqu nostra ultricies, libero lobortis rhoncus aenean nullam nibh aliquam dapibus venenatis faucibus aptent habitant ut lacinia litora, iaculis purus ornare lorem quam, metus sociosqu luctus urna class.</p>
+
+			<p>Sollicitudin ligula dictum enim scelerisque curabitur placerat curae elit taciti rhoncus ullamcorper, sodales potenti consectetur odio class enim velit quisque porta interdum.</p>
+
+			<p>Auctor ornare mollis volutpat id enim consequat et turpis, sagittis porta metus sollicitudin volutpat primis elementum, varius rhoncus vivamus velit nostra euismod amet proin molestie mi donec sed fusce viverra mollis, conubia pellentesque curae sapien habitant quisque nec habitant, rhoncus id velit quisque nec nam aliquet lobortis turpis posuere faucibus fermentum laoreet, ultrices class blandit hac senectus neque nisi, turpis velit etiam gravida viverra hendrerit vestibulum conubia class ipsum mi nostra.</p>
+
+			<p>Metus habitasse quis cursus eu ut risus, sem laoreet sit tortor libero posuere lacinia, nostra justo placerat urna integer lacus vivamus interdum velit fusce class egestas diam dui volutpat, justo a non urna mauris bibendum elementum aliquam lacinia, pretium etiam mauris habitasse aliquet lacinia porta quisque elementum integer vivamus aenean magna tempus ac auctor viverra facilisis, tincidunt taciti himenaeos aliquam pellentesque facilisis himenaeos in, faucibus elit suspendisse metus consectetur ut sollicitudin platea.</p>
+
+		</div>
+
+		<button aria-expanded="false" aria-controls="more-2" class="toggle-content" hidden><span class="text">Show More</span> <span class="screen-readers">about My second article</span></button>
+
+	</article>
+
+	<article>
+
+	<h2>First article</h2>
+
+	<p>Lorem ipsum taciti nulla metus libero metus cursus euismod, ac ultricies adipiscing feugiat netus dictum dapibus ipsum lacinia, cubilia potenti odio placerat feugiat est accumsan pulvinar ornare lorem sed turpis fames class, aenean sapien aliquet porta pretium, fames tellus odio quisque primis.</p>
+
+	<div id="more-1" class="fulltext">
+
+		<p>Nisl nulla augue cubilia fusce ligula ut urna fringilla curabitur, habitant hendrerit rhoncus vivamus taciti sociosqu nostra ultricies, libero lobortis rhoncus aenean nullam nibh aliquam dapibus venenatis faucibus aptent habitant ut lacinia litora, iaculis purus ornare lorem quam, metus sociosqu luctus urna class.</p>
+
+		<p>Sollicitudin ligula dictum enim scelerisque curabitur placerat curae elit taciti rhoncus ullamcorper, sodales potenti consectetur odio class enim velit quisque porta interdum.</p>
+
+		<p>Auctor ornare mollis volutpat id enim consequat et turpis, sagittis porta metus sollicitudin volutpat primis elementum, varius rhoncus vivamus velit nostra euismod amet proin molestie mi donec sed fusce viverra mollis, conubia pellentesque curae sapien habitant quisque nec habitant, rhoncus id velit quisque nec nam aliquet lobortis turpis posuere faucibus fermentum laoreet, ultrices class blandit hac senectus neque nisi, turpis velit etiam gravida viverra hendrerit vestibulum conubia class ipsum mi nostra.</p>
+
+		<p>Metus habitasse quis cursus eu ut risus, sem laoreet sit tortor libero posuere lacinia, nostra justo placerat urna integer lacus vivamus interdum velit fusce class egestas diam dui volutpat, justo a non urna mauris bibendum elementum aliquam lacinia, pretium etiam mauris habitasse aliquet lacinia porta quisque elementum integer vivamus aenean magna tempus ac auctor viverra facilisis, tincidunt taciti himenaeos aliquam pellentesque facilisis himenaeos in, faucibus elit suspendisse metus consectetur ut sollicitudin platea.</p>
+
+	</div>
+
+	<button aria-expanded="false" aria-controls="more-1" class="toggle-content" hidden><span class="text">Show More</span> <span class="screen-readers">about First article</span></button>
+
+	</article>
+	<script src="../../jquery.js"></script>
+	<script>
+			var $toggleButtons = $('.toggle-content');
+			var $fullTextWrappers = $('.fulltext');
+			var fullText;
+			var toggleButtonText;
+			
+			$fullTextWrappers.attr('hidden', true);
+
+			$toggleButtons.removeAttr('hidden');
+
+			// add listener for each button
+			$toggleButtons.each(function () {
+
+				$(this).on('click', function () {
+
+					fullTextWrapper = $(this).parent().find('.fulltext');
+					toggleButtonText = $(this).find('.text');
+
+					console.log(fullTextWrapper);
+
+					// change attributes and text if full text is shown/hidden
+					if (!fullTextWrapper.attr('hidden')) {
+						toggleButtonText.text('Show More');
+						fullTextWrapper.attr('hidden', true);
+						$(this).attr('aria-expanded', false);
+					} else {
+						toggleButtonText.text('Show Less');
+						fullTextWrapper.removeAttr('hidden');
+						$(this).attr('aria-expanded', true);
+					}
+				});
+			});
+	</script>
+</body>
+</html>
