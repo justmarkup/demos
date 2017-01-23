@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Observing states on resize using custom properties</title>
+	<script>
+		document.documentElement.className = 'has-js';
+	</script>
+	<style>
+		/* base styles */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+			line-height: 1.6;
+		}
+
+		main {
+			width: 1000px;
+			max-width: 90%;
+			max-width: calc(100vw - 40px);
+			margin: 0 auto;
+			min-height: calc(100vh - 220px);
+		}
+
+		header {
+			padding: 20px;
+			background: #eee;
+		}
+
+		header:after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+
+		.logo {
+			color: red;
+			text-decoration: none;
+			font-size: 1.4em;
+			display: block;
+			float: left;
+			margin-right: 20px;
+		}
+
+		footer {
+			padding: 2em;
+			background: #eee;
+		}
+
+		/* styles for exandable menu */
+		nav {
+			float: right;
+			margin: 5px 0 0 0;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		nav li {
+			display: inline-block;
+		}
+
+		nav a {
+			color: #111;
+			text-decoration: none;
+			padding: 0 20px 10px 0;
+			display: inline-block;
+		}
+
+		nav a:hover,
+		nav a:focus {
+			text-decoration: underline;
+			color: #000;
+		}
+
+		.menu-button {
+			float: right;
+			margin-top: 8px;
+		}
+
+		.has-js .js--expandable {
+			--expandable: true;
+		}
+
+		@media all and (max-width:799px) {
+			.is--expandable {
+				position: absolute;
+				top: 51px;
+				background: #eee;
+				left: 0;
+				right: 0;
+				padding: 20px;
+			}
+			.is--expandable li {
+				display: block;
+				margin: 0 0 10px 0;
+			}
+		}
+
+		@media all and (min-width: 800px) {
+			.has-js .js--expandable {
+				--expandable: false;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<a class="logo" href="/" title="Home">Logo</a>
+
+		<nav id="menu" class="js-menu js--expandable">
+			<ul>
+				<li><a href="/">Link 1</a></li>
+				<li><a href="/">Another Link</a></li>
+				<li><a href="/">Link 3</a></li>
+				<li><a href="/">Sport</a></li>
+				<li><a href="/">Politics</a></li>
+				<li><a href="/">Fake News</a></li>
+				<li><a href="/">Link 4</a></li>
+				<li><a href="/">Link 5</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h1>Best of Headlines</h1>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officiis excepturi aperiam velit aliquam! Assumenda repellendus sunt eligendi velit laborum libero autem, maxime a saepe, accusamus optio fuga suscipit nemo.</p>
+
+	</main>
+
+	<footer>
+		<p>Footer</p>
+	</footer>
+
+	<script>
+
+		if ('querySelector' in document && 'addEventListener' in window && 'classList' in document.createElement('div')) {
+
+			var expandableElement = document.querySelector('.js--expandable');
+			var header = document.querySelector('header');
+			var menu = document.querySelector('.js-menu');
+			var menuButton = document.createElement('button');
+			var hasRun = false;
+
+			function observeMenu() {
+
+				var isExpandable = window.getComputedStyle(expandableElement).getPropertyValue('--expandable').trim();
+
+				console.log(isExpandable);
+				
+				// check if --expandable is set and if true
+				if (isExpandable === 'true') {
+					if (!hasRun) {
+						initToggleMenu();
+					}
+					menu.setAttribute('hidden', true);
+					menuButton.removeAttribute('hidden');
+					menu.setAttribute('aria-labelledby', 'menu-button');
+				} else {
+					menuButton.setAttribute('hidden', true);
+					menu.removeAttribute('hidden');
+					menu.removeAttribute('aria-labelledby');
+				}
+
+			};
+
+			function initToggleMenu () {
+
+				// Button properties
+				menuButton.classList.add('menu-button');
+				menuButton.setAttribute('id', 'menu-button');
+				menuButton.setAttribute('aria-expanded', 'false');
+				menuButton.setAttribute('aria-controls', 'menu');
+				menuButton.innerHTML = 'Menu';
+				
+				// Menu properties
+				menu.setAttribute('hidden', true);
+				menu.setAttribute('aria-labelledby', 'menu-button');
+				menu.classList.add('is--expandable');
+				
+				// Add menu button to DOM
+				header.insertBefore(menuButton, menu);
+
+
+				// handle click on menu button
+				menuButton.addEventListener('click', function () {
+
+					if (!menu.hasAttribute('hidden')) {
+						// Hide
+						menu.setAttribute('hidden', true);
+						menuButton.setAttribute('aria-expanded', 'false');
+					} else {
+						// Show
+						menu.removeAttribute('hidden');
+						menuButton.setAttribute('aria-expanded', 'true');
+					}
+				}, false);
+
+				hasRun = true;
+
+			};
+
+			observeMenu();
+			
+			window.addEventListener('resize', observeMenu, true);
+			
+		} else {
+			document.documentElement.className = 'no-js';
+		}
+	</script>
+</body>
+</html>
