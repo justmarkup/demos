@@ -150,7 +150,7 @@
 
 	<script>
 
-		if ('querySelector' in document && 'addEventListener' in window && 'classList' in document.createElement('div')) {
+		if (window.CSS && CSS.supports('color', 'var(--primary)')) {
 
 			var expandableElement = document.querySelector('.js--expandable');
 			var header = document.querySelector('header');
@@ -218,8 +218,6 @@
 			
 			window.addEventListener('resize', observeMenu, true);
 			
-		} else {
-			document.documentElement.className = 'no-js';
 		}
 	</script>
 </body>
