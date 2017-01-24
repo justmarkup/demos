@@ -3,6 +3,11 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Observe states on resize using CSS custom properties
+------------
+ * Demo: https://justmarkup.com/demos/observe-onresize-css-custom-properties/
+ * Article: https://justmarkup.com/log/2017/01/handling-states-on-resize-using-css-custom-properties
+
 Show More Pattern
 ------------
  * Demo: [Using :target](https://justmarkup.com/demos/toggle-content/showmore/with-target), [Using JavaScript](https://justmarkup.com/demos/toggle-content/showmore/with-jquery/) and [Using jQuery](https://justmarkup.com/demos/toggle-content/showmore/with-js/)
