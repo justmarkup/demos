@@ -1,4 +1,4 @@
-Demo of push notificatoins
+Demo of using push notifications
 ============
 
 [Demo](https://justmarkup.com/demos/toggle-content/showmore/with-target)
