@@ -1,0 +1,23 @@
+{
+  "name": "Push notifications demo",
+  "short_name": "Push demo",
+  "description": "Demo showing the push notification API",
+  "icons": [
+  	{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+  "start_url": "./?homescreen=1",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "gcm_sender_id": "38399124687",
+  "gcm_user_visible_only": true
+}
