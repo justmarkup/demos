@@ -63,7 +63,7 @@ exports.unsubscribe = (req, res) => {
 
   const endpoint = req.body.endpoint;
 
-  Push.findOneAndRemove({name : endpoint}, function (err,data){
+  Push.findOneAndRemove({endpoint: endpoint}, function (err,data){
     if(err) { 
       console.error('error with unsubscribe', error);
       res.status(500).send('unsubscription not possible'); 
