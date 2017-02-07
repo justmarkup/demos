@@ -12,10 +12,9 @@ const webPush = require('web-push');
 /**
  * Set API key
  */
-webPush.setGCMAPIKey(process.env.GCM_KEY);
 webPush.setVapidDetails(
   'mailto:hallo@justmarkup.com',
-  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PUBLIC_KEY, 
   process.env.VAPID_PRIVATE_KEY
 );
 

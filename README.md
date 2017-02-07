@@ -3,6 +3,11 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Implementing push notifications on the front-end and back-end
+------------
+ * Demo: https://push-notifications-vwursywdxa.now.sh/
+ * Article: https://justmarkup.com/log/2017/02/implementing-push-notifications/
+
 Observe states on resize using CSS custom properties
 ------------
  * Demo: https://justmarkup.com/demos/observe-onresize-css-custom-properties/

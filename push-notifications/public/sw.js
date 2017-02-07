@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const VERSION = 'v0.0.5';
 
@@ -58,11 +58,17 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('push', function(event) {
 
-	 const notificationData = event.data ? event.data.json() : {
-				title: 'Test',
-				body: 'Testing this',
-				icon: '/android-chrome-192x192.png'
+	let notificationData = {};
+
+	try {
+		notificationData = event.data.json();
+	} catch (e) {
+		notificationData = {
+			title: 'Default title',
+			body: 'Default message',
+			icon: '/default-icon.png'
 		};
+	}
 
 	event.waitUntil(
 		self.registration.showNotification(notificationData.title, {
@@ -75,20 +81,20 @@ self.addEventListener('push', function(event) {
 
 self.addEventListener('notificationclick', function(event) {
 
+	// close the notification
 	event.notification.close();
 
-	event.waitUntil(clients.matchAll({
-		type: 'window'
-	}).then(function(clientList) {
-		for (var i = 0; i < clientList.length; i++) {
-			var client = clientList[i];
-			if (client.url === '/' && 'focus' in client) {
-				return client.focus();
-			}
-		}
-		if (clients.openWindow) {
-			return clients.openWindow('/');
-		}
-	}));
+	// see if the current is open and if it is focus it
+	// otherwise open new tab
+  event.waitUntil(
 
+    self.clients.matchAll().then(function(clientList) {
+ 
+      if (clientList.length > 0) {
+        return clientList[0].focus();
+      }
+ 
+      return self.clients.openWindow('/');
+    })
+  );
 });
