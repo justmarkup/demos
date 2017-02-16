@@ -26,9 +26,11 @@ input {
 	border: 1px solid #444;
 	box-sizing: content-box;
 	font-size: 16px;
+
 }
 textarea {
 	height: 100px;
+	background: transparent !important;
 }
 .error {
 	color: red;
