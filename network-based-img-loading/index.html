@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Network based image loading using the Network Information API </title>
+    <style>
+        /* some basic styles */
+        
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+        
+        body {
+            width: 600px;
+            margin: 0 auto;
+            max-width: 90%;
+            max-width: calc(100% - 40px);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        
+        p {
+            margin: 0;
+        }
+        
+        .success {
+            color: green;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Network based image loading using the Network Information API</h1>
+
+    <p id="serviceWorkerInfo" role="alert"></p>
+    <p id="connectionInfo" role="alert"></p>
+
+    <img src="img/test.jpg" alt="Volcano lake on São Miguel">
+
+    <script>
+        var connectionInfo = document.getElementById('connectionInfo');
+        var serviceWorkerInfo = document.getElementById('serviceWorkerInfo');
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js', {
+                scope: './'
+            });
+            serviceWorkerInfo.innerHTML = '✓ Service Worker is supported in your browser.';
+            serviceWorkerInfo.className = 'success';
+        } else {
+            serviceWorkerInfo.innerHTML = '⚠ Service Worker is NOT supported in your browser.';
+            serviceWorkerInfo.className = 'error';
+        }
+
+        if ('connection' in navigator) {
+            var connectionEffectiveType = navigator.connection.effectiveType;
+            var imageResolution = 'default';
+            if (connectionEffectiveType === '4g' || '3g') {
+                imageResolution = 'high';
+            } else if (connectionEffectiveType === 'slow-2g' || '2g') {
+                imageResolution = 'low';
+            }
+
+            connectionInfo.innerHTML = '✓ Network Information API is supported in your browser. <br>ⓘ Your current connection.effectiveType is: <strong aria-live="polite">' + connectionEffectiveType + '</strong>. Loading ' + imageResolution + ' resolution image.';
+            connectionInfo.className = 'success';
+
+            navigator.connection.addEventListener('change', function() {
+                connectionInfo.querySelector('strong').textContent = navigator.connection.effectiveType;
+            });
+
+        } else {
+            connectionInfo.innerHTML = '⚠ Network Information API is NOT supported in your browser. Loading the default image size.';
+            connectionInfo.className = 'error';
+        }
+    </script>
+</body>
+
+</html>
