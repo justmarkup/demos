@@ -38,7 +38,7 @@ self.addEventListener('fetch', function(event) {
                 }
 
                 // Build the image we want to return based on connection
-                const returnUrl = req.url.substr(0, req.url.lastIndexOf(".")) + imageResolution + "." + req.url.split('.')[1];
+                const returnUrl = req.url.substr(0, req.url.lastIndexOf(".")) + imageResolution + "." + req.url.split('.').pop();
 
                 event.respondWith(
                     fetch(returnUrl, {
