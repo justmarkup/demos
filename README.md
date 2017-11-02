@@ -3,6 +3,11 @@ Demos
 
 Author: justmarkup @justmarkup
 
+Network based image loading using the Network Information API in Service Worker
+------------
+* Demo: http://justmarkup.github.io/demos/network-based-img-loading/
+* Article: https://justmarkup.com/log/2017/11/network-based-image-loading/
+
 Implementing push notifications on the front-end and back-end
 ------------
  * Demo: https://push-notifications-vwursywdxa.now.sh/
@@ -17,6 +22,11 @@ Show More Pattern
 ------------
  * Demo: [Using :target](https://justmarkup.com/demos/toggle-content/showmore/with-target), [Using JavaScript](https://justmarkup.com/demos/toggle-content/showmore/with-jquery/) and [Using jQuery](https://justmarkup.com/demos/toggle-content/showmore/with-js/)
  * Article: https://justmarkup.com/log/2017/01/truncating-and-revealing-text-the-show-more-and-read-more-patterns/
+
+Enhancing a comment form
+------------
+ * Demo: http://justmarkup.github.io/demos/form-enhancement/v7/
+ * Article: https://justmarkup.com/log/2016/10/enhancing-a-comment-form/
 
 Using the Web Share API
 ------------
@@ -43,7 +53,3 @@ Responsive Pop-out Menu
  * Demo: https://justmarkup.com/demos/responsive-pop-out-menu
  * Article: https://justmarkup.com/log/2015/03/03/demo-responsive-pop-out-menu/
  
-Enhancing a comment form
-------------
- * Demo: http://justmarkup.github.io/demos/form-enhancement/v7/
- * Article: https://justmarkup.com/log/2016/10/enhancing-a-comment-form/
