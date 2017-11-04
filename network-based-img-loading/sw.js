@@ -10,11 +10,12 @@ self.addEventListener('activate', function(event) {
     return self.clients.claim();
 });
 
+const navigatorConnectionSupported = 'connection' in navigator && navigator.connection.effectiveType;
+
 self.addEventListener('fetch', function(event) {
     console.log(`fetch for request ${event.request.url}`);
     // check if the request is an image
     if (/\.jpg$|.png$|.webp$/.test(event.request.url)) {
-        const navigatorConnectionSupported = 'connection' in navigator;
 
         // check if navigator.connection is supported
         if (navigatorConnectionSupported) {
