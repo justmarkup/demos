@@ -1,7 +1,7 @@
 Demos
 ============
 
-Author: justmarkup @justmarkup
+Author: Michael Scharnagl @justmarkup
 
 Network based image loading using the Network Information API in Service Worker
 ------------
