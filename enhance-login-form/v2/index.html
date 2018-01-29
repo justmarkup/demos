@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Part Two | Enhancing a login form</title>
+</head>
+
+<body>
+    <h1>Part Two: The enhanced HTML version</h1>
+    <form action="/login" method="post">
+        <div class="form_element">
+            <label for="email">
+                Email
+                <span>required</span>
+            </label>
+            <input id="email" type="text" name="email" required pattern="[^]+@[^]+[.][a-z]{2,63}$">
+        </div>
+
+        <div class="form_element">
+            <label for="password">
+                Password
+                <span>required</span>
+            </label>
+            <input id="password" type="password" name="password" required minlength="8" aria-describedby="passwordHint">
+            <p class="form_hint" id="passwordHint">The password must be at least 8 characters long.</p>
+        </div>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+
+</html>
