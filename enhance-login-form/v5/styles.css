@@ -1,0 +1,88 @@
+/* General styles */
+
+html {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: #111;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+form:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+a {
+    color: #0a39ce;
+}
+
+
+/* login form styles */
+
+.form__element {
+    margin: 0 0 1em 0;
+}
+
+.form__label {
+    font-size: 1.2em;
+    display: block;
+    margin: 0 0 0.4em 0;
+}
+
+.form__input {
+    width: 100%;
+    padding: 0.6em;
+    font-size: 1.3em;
+    border: 2px solid ##eee;
+}
+
+.form__required {
+    float: right;
+    font-size: 0.8em;
+    background: #ddd;
+    padding: 0.3em;
+}
+
+.form__hint {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.form__hint:before {
+    content: "\1F6C8";
+    font-size: 1.2em;
+    margin: 0 0.2em 0 0;
+}
+
+.form__submit {
+    background: #326f10;
+    color: #fff;
+    border: none;
+    padding: 0.6em;
+    font-size: 1.4em;
+    float: right;
+}
+
+.form__error {
+    margin: 0;
+    padding: 0.4em;
+    color: #b0141d;
+    background-color: #fbd8d8;
+}
+
+.has-error input {
+    border: 2px solid #b0141d;
+}

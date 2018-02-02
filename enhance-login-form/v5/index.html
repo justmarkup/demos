@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Part Two | Enhancing a login form</title>
+    <title>Part Five | Enhancing a login form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
                 Email
                 <span class="form__required">required</span>
             </label>
-            <input class="form__input" id="email" type="text" name="email" required pattern="[^]+@[^]+[.][a-z]{2,63}$" autocomplete="email">
+            <input class="form__input" id="email" type="text" name="email" required pattern="[^]+@[^]+[.][a-z]{2,63}$" autocomplete="email" data-error="Please use a valid email address." data-empty="Please fill out this field">
         </div>
 
         <div class="form__element">
@@ -24,13 +25,14 @@
                 Password
                 <span class="form__required">required</span>
             </label>
-            <input class="form__input" id="password" type="password" name="password" required minlength="8" aria-describedby="passwordHint" , autocomplete="current-password">
+            <input class="form__input" id="password" type="password" name="password" required minlength="8" aria-describedby="passwordHint" , autocomplete="current-password" data-error="Please use a password with at least 8 characters." data-empty="Please fill out this field">
             <p class="form__hint" id="passwordHint">The password must be at least 8 characters long.</p>
         </div>
-
         <a href="/forgotPassword">Forgot password?</a>
         <input class="form__submit" type="submit" value="Login">
     </form>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
