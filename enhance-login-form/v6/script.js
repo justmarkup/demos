@@ -44,6 +44,11 @@ if ('checkValidity' in form && 'querySelector' in document && 'classList' in doc
 
             // check validation on blur
             input.addEventListener("blur", function(event) {
+
+                if (event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON') {
+                    return;
+                }
+
                 input.checkValidity();
 
                 if (input.checkValidity()) {
