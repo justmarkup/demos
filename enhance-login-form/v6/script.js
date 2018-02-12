@@ -22,6 +22,7 @@ if ('checkValidity' in form && 'querySelector' in document && 'classList' in doc
                     newMessage = oldMessage;
                 }
 
+
                 newMessage.innerText = message;
 
                 input.setAttribute('aria-describedby', 'alert-' + input.name);
@@ -55,6 +56,31 @@ if ('checkValidity' in form && 'querySelector' in document && 'classList' in doc
                     toggleErrorMessage(input, true);
                 }
             });
+        });
+    }
+
+    // toggle password field between type="text" and type="password"
+
+    var togglePasswordButton = document.querySelector('[data-toggle-password]');
+
+    if (togglePasswordButton) {
+        var togglePasswordButtonText = togglePasswordButton.querySelector('span');
+        var passwordField = document.querySelector('[data-toggle-password-field]');
+        togglePasswordButton.removeAttribute('hidden');
+
+
+        togglePasswordButton.addEventListener('click', function() {
+            var isPressed = JSON.parse(this.getAttribute('aria-pressed'));
+
+            if (isPressed) {
+                passwordField.setAttribute('type', 'password');
+                this.setAttribute('aria-pressed', false);
+                togglePasswordButtonText.textContent = 'Show password';
+            } else {
+                passwordField.setAttribute('type', 'text');
+                this.setAttribute('aria-pressed', true);
+                togglePasswordButtonText.textContent = 'Hide password';
+            }
         });
     }
 }
