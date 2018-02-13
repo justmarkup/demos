@@ -3,6 +3,11 @@ Demos
 
 Author: Michael Scharnagl @justmarkup
 
+Enhancing a login form – from basic to validation to reveal password
+------------
+* Demo: https://enhance-login-form.glitch.me/login
+* Article: https://justmarkup.com/log/2018/02/enhancing-a-login-form/
+
 Network based image loading using the Network Information API in Service Worker
 ------------
 * Demo: http://justmarkup.github.io/demos/network-based-img-loading/
