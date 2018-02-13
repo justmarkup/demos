@@ -2,7 +2,23 @@
 var form = document.createElement('form');
 if ('checkValidity' in form && 'querySelector' in document && 'classList' in document.documentElement) {
 
-    // get all inputs
+    // feedback messages
+    var messageComponents = document.querySelectorAll("[data-message]");
+
+    if (messageComponents.length > 0) {
+
+        [].forEach.call(messageComponents, function(message) {
+            var messageButton = message.querySelector("[data-close-notification]");
+
+            messageButton.removeAttribute('hidden');
+
+            messageButton.addEventListener("click", function() {
+                this.parentElement.hidden = true;
+            });
+        });
+    }
+
+    // form validation
     var inputs = document.querySelectorAll("[data-error]");
 
     if (inputs.length > 0) {
@@ -39,10 +55,9 @@ if ('checkValidity' in form && 'querySelector' in document && 'classList' in doc
 
             }
         };
-        // loop over each input
+
         [].forEach.call(inputs, function(input) {
 
-            // check validation on blur
             input.addEventListener("blur", function(event) {
 
                 if (event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON') {
@@ -65,7 +80,6 @@ if ('checkValidity' in form && 'querySelector' in document && 'classList' in doc
     }
 
     // toggle password field between type="text" and type="password"
-
     var togglePasswordButton = document.querySelector('[data-toggle-password]');
 
     if (togglePasswordButton) {

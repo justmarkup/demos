@@ -2,7 +2,23 @@
 var form = document.createElement('form');
 if ('checkValidity' in form && 'querySelector' in document && 'classList' in document.documentElement) {
 
-    // get all inputs
+    // feedback messages
+    var messageComponents = document.querySelectorAll("[data-message]");
+
+    if (messageComponents.length > 0) {
+
+        [].forEach.call(messageComponents, function(message) {
+            var messageButton = message.querySelector("[data-close-notification]");
+
+            messageButton.removeAttribute('hidden');
+
+            messageButton.addEventListener("click", function() {
+                this.parentElement.hidden = true;
+            });
+        });
+    }
+
+    // form validation
     var inputs = document.querySelectorAll("[data-error]");
 
     if (inputs.length > 0) {
