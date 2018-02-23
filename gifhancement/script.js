@@ -26,7 +26,7 @@ var supports_mp4_in_img = function(callback) {
 
 supports_video_autoplay(function(supportsAutoplay) {
     supports_mp4_in_img(function(supportsMP4InImg) {
-        if (!supportsMP4InImg) {
+        if (supportsMP4InImg) {
             var videos = document.querySelectorAll('[data-gif]');
 
             [].forEach.call(videos, function(video) {
