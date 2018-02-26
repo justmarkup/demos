@@ -31,7 +31,7 @@ supports_video_autoplay(function(supportsAutoplay) {
 
             [].forEach.call(videos, function(video) {
                 var img = new Image();
-                img.src = video.src;
+                img.src = video.querySelector('source').src;
                 img.setAttribute('alt', "");
                 if (img.decode) {
                     img.decode().then(function() { video.parentNode.replaceChild(img, video); });
