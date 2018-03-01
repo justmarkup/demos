@@ -52,14 +52,12 @@ supports_video_autoplay(function(supportsAutoplay) {
                         var video = entry.target;
                         if (entry.intersectionRatio > 0) {
                             // video is in the viewport - start it
-                            if (!video.hasAttribute('autoplay')) {
-                                video.setAttribute('autoplay', true);
-                                video.setAttribute('loop', true);
-                            }
-                            video.play();
+                            video.setAttribute('autoplay', true);
+                            video.setAttribute('loop', true);
                         } else {
                             // video is outside the viewport - pause it
-                            video.pause();
+                            video.removeAttribute('autoplay');
+                            video.removeAttribute('loop');
                         }
                     });
                 });
