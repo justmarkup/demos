@@ -6,7 +6,7 @@ var supports_video_autoplay = function(callback) {
     var p = false;
     try {
         p = "play" in v && v.play();
-    } catch {
+    } catch (err) {
 
     }
     typeof callback === "function" && callback(!v.paused || "Promise" in window && p instanceof Promise);
