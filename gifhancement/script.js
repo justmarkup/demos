@@ -3,8 +3,12 @@ var supports_video_autoplay = function(callback) {
 
     var v = document.createElement("video");
     v.paused = true;
-    var p = "play" in v && v.play();
+    var p = false;
+    try {
+        p = "play" in v && v.play();
+    } catch {
 
+    }
     typeof callback === "function" && callback(!v.paused || "Promise" in window && p instanceof Promise);
 
 };
