@@ -6,7 +6,7 @@ Author: Michael Scharnagl @justmarkup
 Transforming a link to a login page to a button opening the login form in an overlay
 ------------
 * Demo: http://justmarkup.github.io/demos/link-to-button
-* Article: https://justmarkup.com/log/?p=3432&preview=true
+* Article:  https://justmarkup.com/log/2019/01/the-link-to-button-enhancement/
 
 Enhancing a login form – from basic to validation to reveal password
 ------------
