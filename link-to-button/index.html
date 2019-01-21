@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Link to Login Overlay</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div id="content" class="content">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="./" aria-current="page">Home</a></li>
+                    <li><a href="login.html" data-open-overlay>Login</a></li>
+                    <li><a href="anotherpage.html">Another page</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>Login Link to Login Overlay example</h1>
+
+            <p>Some Content here</p>
+        </main>
+        <footer>
+            <p>The footer of the page</p>
+        </footer>
+    </div>
+
+    <div id="dialog" class="dialog" hidden>
+        <div role="dialog" class="dialog-content">
+            <button type="button" class="dialog-close" data-a11y-dialog-hide aria-label="Close this dialog window">
+            &times;
+            </button>
+
+            <div data-dialog-content></div>
+        </div>
+    </div>
+
+    <script type="module" src="a11y-dialog.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
