@@ -6,14 +6,6 @@
             var dialogContent = document.querySelector('[data-dialog-content]');
             window.dialog = false;
 
-            dialogOpener.outerHTML = `
-                <button data-link="${dialogOpener.href}" class="link-like">
-                    ${dialogOpener.textContent}
-                </button>
-            `;
-
-            dialogOpener = document.querySelector('[data-link="' + dialogOpener.href + '"]')
-
             if (!window.dialog) {
                 var dialogElement = document.getElementById('dialog');
                 var mainEl = document.querySelector('#content');
@@ -31,10 +23,16 @@
                 });
             }
 
+            dialogOpener.outerHTML = `
+                <button data-link="${dialogOpener.href}" class="link-like">
+                    ${dialogOpener.textContent}
+                </button>
+            `;
+
+            dialogOpener = document.querySelector('[data-link="' + dialogOpener.href + '"]');
+
             dialogOpener.addEventListener('click', function(ev) {
                 var link = this.dataset.link ? this.dataset.link : false;
-
-                console.log('click', link);
 
                 if (link) {
 

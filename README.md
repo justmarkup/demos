@@ -3,6 +3,11 @@ Demos
 
 Author: Michael Scharnagl @justmarkup
 
+Transforming a link to a login page to a button opening the login form in an overlay
+------------
+* Demo: http://justmarkup.github.io/demos/link-to-button
+* Article: https://justmarkup.com/log/?p=3432&preview=true
+
 Enhancing a login form – from basic to validation to reveal password
 ------------
 * Demo: https://enhance-login-form.glitch.me/login
