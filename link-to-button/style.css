@@ -1,0 +1,282 @@
+/* -------------------------------------------------------------------------- *\
+ * Necessary styling for the dialog to work
+ * -------------------------------------------------------------------------- */
+
+
+/**
+ * When `<dialog>` is properly supported, the overlay is implied and can be
+ * styled with `::backdrop`, which means the DOM one should be removed.
+ */
+
+[data-a11y-dialog-native] .dialog-overlay {
+    display: none;
+}
+
+
+/**
+ * When `<dialog>` is not supported, its default display is `inline` which can
+ * cause layout issues.
+ */
+
+dialog[open] {
+    display: block;
+}
+
+.dialog[aria-hidden="true"] {
+    display: none;
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Styling to make the dialog look like a dialog
+ * -------------------------------------------------------------------------- */
+
+.dialog-overlay {
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.66);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.66);
+}
+
+.dialog-content {
+    background-color: rgb(255, 255, 255);
+    z-index: 3;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: 2px solid black;
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Extra dialog styling to make it shiny
+ * -------------------------------------------------------------------------- */
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes appear {
+    from {
+        transform: translate(-50%, -40%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.dialog:not([aria-hidden='true'])>.dialog-overlay {
+    animation: fade-in 200ms 1 both;
+}
+
+.dialog:not([aria-hidden='true'])>.dialog-content {
+    animation: appear 400ms 150ms 1 both;
+}
+
+.dialog-content {
+    padding: 1em;
+    max-width: 90%;
+    width: 600px;
+    border-radius: 2px;
+}
+
+@media screen and (min-width: 700px) {
+    .dialog-content {
+        padding: 2em;
+    }
+}
+
+.dialog-overlay {
+    background-color: rgba(43, 46, 56, 0.9);
+}
+
+.dialog h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.dialog-close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1.25em;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+@media screen and (min-width: 700px) {
+    .dialog-close {
+        top: 1em;
+        right: 1em;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Base stuff
+ * -------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p,
+li {
+    font-size: 1.4rem;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+h1,
+h2 {
+    margin-bottom: 0;
+}
+
+.link-like,
+a {
+    color: #0d2b9f;
+}
+
+.link-like:hover,
+.link-like:active,
+a:hover,
+a:active {
+    color: #8802ca;
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Helpers
+ * -------------------------------------------------------------------------- */
+
+.link-like {
+    background-color: transparent;
+    text-decoration: underline;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Layout
+ * -------------------------------------------------------------------------- */
+
+nav {
+    background: #eee;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    padding: 0 20px 0 0;
+}
+
+.content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+footer {
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding: 0 0 20px 0;
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * Form styling
+ * -------------------------------------------------------------------------- */
+
+form {
+    margin-top: 2em;
+}
+
+form label {
+    font-weight: bold;
+    margin: 5px 10px 5px 0;
+    display: block;
+}
+
+form input {
+    font: inherit;
+    padding: 5px;
+    border: 1px solid black;
+    width: 100%;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+form button {
+    background-color: #000;
+    color: white;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: 0.15s;
+    display: inline-block;
+    border: 2px solid #000;
+}
+
+form button:hover,
+form button:active {
+    background-color: #fff;
+    color: #000;
+}
+
+.form__hint {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+}
+
+.form__element {
+    margin-bottom: 20px;
+}
