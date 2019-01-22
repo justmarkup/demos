@@ -24,7 +24,7 @@
             }
 
             dialogOpener.outerHTML = `
-                <button data-link="${dialogOpener.href}" class="link-like">
+                <button data-link="${dialogOpener.href}">
                     ${dialogOpener.textContent}
                 </button>
             `;

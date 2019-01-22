@@ -181,6 +181,19 @@ a:active {
     color: #8802ca;
 }
 
+[data-link] {
+    color: #0d2b9f;
+    font-size: 1.4rem;
+    background: #fff;
+    border: 1px solid #000;
+}
+
+[data-link]:hover,
+[data-link]:focus {
+    background: #000;
+    color: #fff;
+}
+
 
 /* -------------------------------------------------------------------------- *\
  * Helpers
