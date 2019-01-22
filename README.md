@@ -1,7 +1,7 @@
 Demos
 ============
 
-Author: Michael Scharnagl @justmarkup
+Author: Michael Scharnagl [@justmarkup](https://twitter.com/justmarkup)
 
 Transforming a link to a login page to a button opening the login form in an overlay
 ------------
