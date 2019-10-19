@@ -60,8 +60,6 @@ typings/
 # next.js build output
 .next
 
-# build server code
-dist
 
-# config
-config
+# uploads
+uploads

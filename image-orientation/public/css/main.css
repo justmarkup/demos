@@ -5,10 +5,31 @@ body {
     max-width: 90%;
     font-family: monospace;
     color: #1c2020;
+    font-size: 1.2em;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
+    border: 4px solid black;
+    margin: 10px 0;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.images {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    background: #eee;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
 }

@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "uploads")));
 
-app.get('/show', auth.connect(basicAuth), async(req, res) => {
+app.get('/show', async(req, res) => {
     const images = getImagesFromDir(path.join(__dirname, 'uploads'));
 
     res.render('show', {
@@ -39,12 +39,12 @@ app.get('/show', auth.connect(basicAuth), async(req, res) => {
     });
 });
 
-app.get('/', auth.connect(adminAuth), async(req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
 
 
-app.post('/upload', auth.connect(adminAuth), upload.array('file'), async(req, res, next) => {
+app.post('/upload', upload.array('file'), async (req, res, next) => {
     const images = req.files ? req.files : req.body.files ? req.body.files : false;
 
     if (!images) {
@@ -57,7 +57,7 @@ app.post('/upload', auth.connect(adminAuth), upload.array('file'), async(req, re
         await correctOrientation(image);
     }
 
-    res.redirect('./');
+    res.redirect('./show');
 });
 
 
@@ -65,24 +65,6 @@ const readFileAsync = async(file) => {
     return await new Promise((resolve, reject) => {
         fs.readFile(file, async(err, data) => {
             err ? reject(err) : resolve(data);
-        });
-    });
-};
-
-const writeFileAsync = async(file, buffer) => {
-    return await new Promise((resolve, reject) => {
-        fs.open(file, 'w', function(err, fd) {
-            if (err) {
-                throw 'could not open file: ' + err;
-            }
-
-            // write the contents of the buffer, from position 0 to the end, to the file descriptor returned in opening our file
-            fs.write(fd, buffer, 0, buffer.length, null, function(err) {
-                if (err) reject(err);
-                fs.close(fd, function(data) {
-                    resolve(data);
-                });
-            });
         });
     });
 };
@@ -97,13 +79,12 @@ const correctOrientation = async(image) => {
             if (imageOrientation === 1) {
                 imageOrientation = false;
             } else {
-                data["0th"]["274"] = 1;
+                data["0th"]["274"] = 1; // reset EXIF orientation value
             }
         }
     });
 
     if (imageOrientation) {
-        await writeFileAsync(path.join(__dirname, "uploads") + '/' + image.filename, buffer);
         switch (imageOrientation) {
             case 3:
                 rotateDeg = 180;
@@ -118,7 +99,7 @@ const correctOrientation = async(image) => {
                 rotateDeg = 0;
                 break;
         }
-        Jimp.read(path.join(__dirname, "uploads") + '/' + image.filename, (err, lenna) => {
+        Jimp.read(buffer, (err, lenna) => {
             if (err) {
                 console.log('err', err);
                 return;
@@ -148,7 +129,6 @@ const getImagesFromDir = (dirPath) => {
 
     return allImages.reverse();
 };
-
 
 app.listen(PORT);
 console.log('app running on port ', PORT);
