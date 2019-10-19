@@ -44,14 +44,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/upload', upload.array('file'), async (req, res, next) => {
-    const images = req.files ? req.files : req.body.files ? req.body.files : false;
-
-    if (!images) {
-        const error = new Error('Please upload a file');
-        error.httpStatusCode = 400;
-        res.redirect('/');
-    }
+app.post('/upload', upload.array('file'), async(req, res, next) => {
+    const images = req.files;
 
     for (image of images) {
         await correctOrientation(image);
