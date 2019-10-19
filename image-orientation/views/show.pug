@@ -1,0 +1,10 @@
+extends layout
+
+block head
+
+block content
+
+    ul
+        each image in images
+            li 
+                img(src=image, loading="lazy", width="800", alt="")

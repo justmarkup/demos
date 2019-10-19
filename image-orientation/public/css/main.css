@@ -1,0 +1,14 @@
+html,
+body {
+    margin: 0 auto;
+    width: 800px;
+    max-width: 90%;
+    font-family: monospace;
+    color: #1c2020;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

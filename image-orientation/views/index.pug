@@ -1,0 +1,17 @@
+extends layout
+
+
+block head
+    link(href="./css/filepond.css", rel="stylesheet")
+
+block content
+
+    div.wrapper
+
+        h1(class="hl--alpha") Upload
+
+        form(action="./upload", enctype="multipart/form-data", method="POST", class="form")
+            label(for="file") Select image: 
+            input(type="file", name="file", multiple, accept="image/*")
+            input(type="submit", value="Upload your photos")
+
