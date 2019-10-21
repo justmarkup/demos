@@ -3,6 +3,10 @@ Demos
 
 Author: Michael Scharnagl [@justmarkup](https://twitter.com/justmarkup)
 
+Fixing image orientation on upload
+------------
+* Article:  https://justmarkup.com/articles/2019-10-21-image-orientation
+
 Transforming a link to a login page to a button opening the login form in an overlay
 ------------
 * Demo: http://justmarkup.github.io/demos/link-to-button
