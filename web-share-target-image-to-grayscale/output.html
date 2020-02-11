@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image to Grayscale</title>
+
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        
+        body {
+            background: #000;
+            color: #ddd;
+            margin: 0;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+        
+        h1 {
+            font-size: 22px;
+            text-align: center;
+        }
+        
+        img,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        canvas {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Image to Grayscale</h1>
+    <img id="image" alt="">
+    <canvas id="canvas"></canvas>
+    <script>
+        if (navigator.serviceWorker) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js', {
+                    scope: './'
+                });
+                navigator.serviceWorker.onmessage = function(event) {
+
+                    const imageBlob = event.data.file;
+                    const image = document.getElementById('image');
+                    image.src = URL.createObjectURL(imageBlob);
+
+                    const canvas = document.getElementById("canvas");
+                    const img = document.createElement('img');
+                    const ctx = canvas.getContext('2d');
+
+                    img.src = URL.createObjectURL(imageBlob);
+                    img.crossOrigin = "anonymous";
+
+                    img.onload = function() {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.filter = "grayscale(100%)";
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                        const data = canvas.toDataURL("image/jpeg");
+                        image.src = data;
+                    }
+                };
+            });
+        }
+    </script>
+</body>
+
+</html>
