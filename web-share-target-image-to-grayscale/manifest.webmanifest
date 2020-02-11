@@ -1,0 +1,31 @@
+{
+    "name": "Image to Grayscale",
+    "short_name": "Image to Grayscale",
+    "start_url": "./index.html",
+    "theme_color": "#333",
+    "background_color": "#333",
+    "icons": [{
+            "src": "./android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "share_target": {
+        "action": "./upload",
+        "method": "POST",
+        "enctype": "multipart/form-data",
+        "params": {
+            "files": [{
+                "name": "file",
+                "accept": ["image/*"]
+            }]
+        }
+    },
+    "display": "minimal-ui",
+    "scope": "./"
+}

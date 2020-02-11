@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image to Grayscale</title>
+
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        
+        body {
+            background: #000;
+            margin: 0;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            color: #ddd;
+        }
+        
+        h1 {
+            font-size: 22px;
+            text-align: center;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Image to Grayscale</h1>
+    <p>Install this page to share any image via your native Gallery and get a grayscale version back.</p>
+    <p>Note: Web Share Target API is currently only supported in new Chromium-based Browsers, so you need to use one of them to try it.</p>
+    <script>
+        if (navigator.serviceWorker) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js', {
+                    scope: './'
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
