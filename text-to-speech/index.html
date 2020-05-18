@@ -129,10 +129,11 @@
                         voiceSelect.appendChild(voiceOption);
                     });
                     voiceSelect.hidden = false;
-                    voiceSelect.addEventListener('change', () => {
+                    voiceSelect.addEventListener('change', (ev) => {
                         chosenVoice = voices.filter((voice) => {
                             return voice.name === ev.target.value;
                         })[0];
+                        console.log(chosenVoice)
                     });
 
                     playButton.hidden = false;
