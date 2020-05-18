@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text to speech demo</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        
+        body {
+            width: 600px;
+            max-width: 90%;
+            margin: 20px auto;
+        }
+        
+        label {
+            display: block;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 50vh;
+            padding: 10px;
+            margin: 4px 0 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Text to speech</h1>
+    <noscript id="nosupport">
+        <p>Your browser doesn't support Text to Speech</p>
+    </noscript>
+
+    <label for="text">Text</label>
+    <textarea name="text" id="text" data-tts-text>This is a text</textarea>
+    <div data-tts>
+        <select name="voices" id="voices" hidden data-tts-select></select>
+        <button hidden data-tts-play>Play</button>
+        <button hidden data-tts-pause>Pause</button>
+        <button hidden data-tts-resume>Resume</button>
+    </div>
+    <script>
+        if ('speechSynthesis' in window) {
+            const synthesis = window.speechSynthesis;
+            const voiceSelect = document.querySelector('[data-tts-select]');
+            const playButton = document.querySelector('[data-tts-play]');
+            const pauseButton = document.querySelector('[data-tts-pause]');
+            const resumeButton = document.querySelector('[data-tts-resume]');
+            const textarea = document.querySelector('[data-tts-text]');
+            let text = false;
+            let chosenVoice = false;
+            let isPlaying = false;
+            let voices;
+
+            const getText = () => {
+                return textarea.value.replace(/\n\n/g, ', ');
+            };
+
+            const play = () => {
+                if (!text) {
+                    text = getText()
+                }
+                const utterance = new SpeechSynthesisUtterance(text);
+
+                if (chosenVoice) {
+                    utterance.voice = chosenVoice;
+                }
+
+                // Speak the utterance
+                synthesis.speak(utterance);
+                isPlaying = true;
+                pauseButton.hidden = false;
+                playButton.hidden = true;
+                resumeButton.hidden = true;
+
+                // somehow chrome stops after 14seconds, so resume from there
+                var r = setInterval(() => {
+                    if (!isPlaying) {
+                        clearInterval(r);
+                    } else {
+                        synthesis.resume();
+                    }
+                }, 14000);
+
+                window.addEventListener('beforeunload', () => {
+                    clearInterval(r);
+                    synthesis.cancel();
+                });
+
+
+                utterance.onend = () => {
+                    isPlaying = false;
+                    playButton.hidden = false;
+                    pauseButton.hidden = true;
+                    resumeButton.hidden = true;
+                    text = false;
+                }
+            };
+
+            const pause = () => {
+                synthesis.pause();
+                isPlaying = false;
+                pauseButton.hidden = true;
+                resumeButton.hidden = false;
+                playButton.hidden = true;
+            };
+
+            const resume = () => {
+                synthesis.resume();
+                isPlaying = true;
+                pauseButton.hidden = false;
+                resumeButton.hidden = true;
+                playButton.hidden = true;
+            }
+
+            const setVoices = () => {
+                voices = synthesis.getVoices();
+                // Log the properties of the voices in the list
+                if (voices && voices.length && voices.length > 0) {
+                    voices.forEach(function(voice) {
+                        const voiceOption = document.createElement('option');
+                        voiceOption.innerText = voice.name;
+                        voiceSelect.appendChild(voiceOption);
+                    });
+                    voiceSelect.hidden = false;
+                    voiceSelect.addEventListener('change', () => {
+                        chosenVoice = voices.filter((voice) => {
+                            return voice.name === ev.target.value;
+                        })[0];
+                    });
+
+                    playButton.hidden = false;
+                    playButton.addEventListener('click', () => {
+                        play();
+                    });
+
+                    pauseButton.addEventListener('click', () => {
+                        pause();
+                    });
+
+                    resumeButton.addEventListener('click', () => {
+                        resume();
+                    });
+
+                    textarea.addEventListener('keyup', (ev) => {
+                        text = ev.target.value.replace(/\n\n/g, ', ');
+                        isPlaying = false;
+                        synthesis.cancel();
+                        playButton.hidden = false;
+                        pauseButton.hidden = true;
+                        resumeButton.hidden = true;
+                    });
+
+                }
+            };
+
+            setTimeout(function() {
+                setVoices();
+            }, 50)
+
+
+        } else {
+            document.documentElement.innerHTML = document.getElementById('nosupport').innerHTML;
+        }
+    </script>
+</body>
+
+</html>
